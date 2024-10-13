@@ -22,8 +22,8 @@ def receive_messages():
     
     while True:
         data, addr = sock.recvfrom(1024)
-        print(f"Peer {addr}: {data.decode()}\n")
-        print("Enter message to send: ", end=" ")
+        print(f"\nPeer {addr}: {data.decode()}\n")
+        print("Enter message to send: ", end=">")
 
 def main():
     
@@ -31,14 +31,12 @@ def main():
     recv_thread = threading.Thread(target=receive_messages, daemon=True)
     recv_thread.start()
     
-    
-    
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
     sock.bind(('0.0.0.0', talking_port))
     
     while True:
-        message = input("Enter message to send: ")
+        message = input("\nEnter message to send: ")
         sock.sendto(message.encode(), (peer_ip, peer_port))
 
 if __name__ == "__main__":
