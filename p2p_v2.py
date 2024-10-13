@@ -11,8 +11,8 @@ peer_ip = input("Enter the peer's IP address: ")
 peer_port = int(input("Enter the peer's port: "))
 
 # Define separate ports for sending and receiving
-receive_port = 12344  # Port for listening on this device
-send_port = 12345     # Port to send from on this device
+receive_port = 42424  # Port for listening on this device
+send_port = 42425     # Port to send from on this device
 
 def receive_messages():
     print("Start listening for messages...")

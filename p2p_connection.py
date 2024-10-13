@@ -13,38 +13,39 @@ peer_port = int(input("Enter the peer's port: "))
 
 talking_port = 42424
 
-def receive_messages(sock):
+def receive_messages():
     print(f"Start listening..")
-    # sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    # sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    # sock.bind(('0.0.0.0', peer_port))
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
+    sock.bind(('0.0.0.0', peer_port))
     
     while True:
         data, addr = sock.recvfrom(1024)
         print(f"Peer {addr}: {data.decode()}")
 
 def main():
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    sock.bind(('0.0.0.0', talking_port))
+    # sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
+    # sock.bind(('0.0.0.0', talking_port))
     
     # Start the receiving thread
-    recv_thread = threading.Thread(target=receive_messages, daemon=True, args=(sock,))
+    recv_thread = threading.Thread(target=receive_messages, daemon=True)
     recv_thread.start()
     
     print('Start punching hole..')
-    # sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    # sock.bind(('0.0.0.0', peer_port))
-    # sock.sendto(b'0', (peer_ip, talking_port))
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
+    sock.bind(('0.0.0.0', peer_port))
+    sock.sendto(b'0', (peer_ip, talking_port))
     
     
     # sock.close()
     # time.sleep(5)
     # sock = None
     
-    # sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    
-    # sock.bind(('0.0.0.0', talking_port))
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
+    sock.bind(('0.0.0.0', talking_port))
     
     while True:
         message = input("Enter message to send: ")
