@@ -30,12 +30,12 @@ def main():
     recv_thread.start()
     
     print('Start punching hole..')
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    # sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     # sock.bind(('0.0.0.0', peer_port))
-    sock.sendto(b'0', (peer_ip, talking_port))
+    # sock.sendto(b'0', (peer_ip, talking_port))
     
     
-    sock.close()
+    # sock.close()
     # time.sleep(5)
     sock = None
     
