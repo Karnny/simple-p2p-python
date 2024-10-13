@@ -17,7 +17,7 @@ def receive_messages():
     print(f"Start listening..")
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    sock.bind(('127.0.0.1', peer_port))
+    sock.bind(('localhost', peer_port))
     
     while True:
         data, addr = sock.recvfrom(1024)
