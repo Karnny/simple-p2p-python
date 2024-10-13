@@ -1,7 +1,6 @@
-# p2p_connection.py
+
 import socket
 import threading
-import random
 from stun_discovery import discover_public_ip_port
 
 ext_ip, ext_port, nat_type = discover_public_ip_port()
