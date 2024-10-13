@@ -4,8 +4,8 @@ import threading
 import time
 from stun_discovery import discover_public_ip_port
 
-ext_ip, ext_port = discover_public_ip_port()
-print(f"My IP: {ext_ip}, My port: {ext_port}")
+ext_ip, ext_port, nat_type = discover_public_ip_port()
+print(f"My IP: {ext_ip}, My port: {ext_port}, NAT Type: {nat_type}")
 
 # Ask for the peer's IP and port
 peer_ip = input("Enter the peer's IP address: ")
