@@ -1,6 +1,7 @@
 # p2p_connection.py
 import socket
 import threading
+import time
 from stun_discovery import discover_public_ip_port
 
 ext_ip, ext_port = discover_public_ip_port()
@@ -32,6 +33,9 @@ def main():
     recv_thread.start()
     
     sock.close()
+    time.sleep(3)
+    sock = None
+    
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
     sock.bind(('0.0.0.0', talking_port))
