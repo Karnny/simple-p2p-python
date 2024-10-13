@@ -31,11 +31,6 @@ def main():
     recv_thread = threading.Thread(target=receive_messages, daemon=True)
     recv_thread.start()
     
-    print('Start punching hole..')
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    sock.bind(('0.0.0.0', peer_port))
-    # sock.sendto(b'0', (peer_ip, talking_port))
     
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
