@@ -16,8 +16,8 @@ talking_port = 12344
 def receive_messages():
     print(f"Start listening..")
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    sock.bind(('0.0.0.0', peer_port))
+    # sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
+    sock.bind(('', peer_port))
     
     while True:
         data, addr = sock.recvfrom(1024)
