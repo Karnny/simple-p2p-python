@@ -11,7 +11,7 @@ print(f"My IP: {ext_ip}, My port: {ext_port}")
 peer_ip = input("Enter the peer's IP address: ")
 peer_port = int(input("Enter the peer's port: "))
 
-talking_port = 12344
+talking_port = 42424
 
 def receive_messages(sock):
     print(f"Start listening..")
