@@ -27,7 +27,7 @@ def main():
     print('Start punching hole..')
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    sock.bind(('0.0.0.0', peer_port))
+    # sock.bind(('0.0.0.0', peer_port))
     sock.sendto(b'0', (peer_ip, talking_port))
     
     # Start the receiving thread
@@ -35,12 +35,12 @@ def main():
     recv_thread.start()
     
     sock.close()
-    time.sleep(10)
+    # time.sleep(5)
     sock = None
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
-    sock.bind(('0.0.0.0', talking_port))
+    # sock.bind(('0.0.0.0', talking_port))
     
     while True:
         message = input("Enter message to send: ")
