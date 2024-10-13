@@ -12,7 +12,7 @@ peer_port = int(input("Enter the peer's port: "))
 
 talking_port = 12344
 
-def receive_messages(sock):
+def receive_messages():
     print(f"Start listening..")
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     sock.bind(('0.0.0.0', peer_port))
