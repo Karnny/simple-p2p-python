@@ -33,6 +33,7 @@ def main():
     
     
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Enable address reuse
     sock.bind(('0.0.0.0', talking_port))
     
     while True:
